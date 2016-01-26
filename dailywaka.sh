@@ -15,8 +15,8 @@ auth="Authorization: Basic $api_key"
 command="$baseurl""$durations"?date="$now"
 
 response=$(/usr/bin/curl --silent --header "$auth" "$command")
-#echo $response
 duration=$(echo "$response" | grep -o "duration\"\:.*" | cut -f2- -d':')
+echo $duration
 
 if [[ -z "$duration" ]]; then
   notify-send -i \
